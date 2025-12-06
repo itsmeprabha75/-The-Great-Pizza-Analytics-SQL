@@ -1,0 +1,17 @@
+Name,Email Address,AnswerQuery
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select distinct(category)as Pizza_categories from pizza_types;
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select pizza_type_id,name,case when ingredients is null or ingredients = ''then 'Missing Data'else ingredientsend as ingredientsfrom pizza_typeslimit 5;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select * from pizzas where price is null;
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select order_id,date from orders where date = '2015-01-01';"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select * from pizzas order by price desc;
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select pizza_id,pizza_type_id,size from pizzas where size in ('L','XL');"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select * from pizzas where price between 15.00 and 17.00;
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select * from pizza_types where name like '%Chicken%';
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select * from orders where date = '2015-02-15' or time > '20:00:00';
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,select sum(quantity) as Total_quantity_sold from order_details;
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select round(avg(price),2) as Average_price from pizzas;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select o.order_id, round(sum(p.price * o.quantity),2)  as Total_order_value from order_details o  join pizzas p  on o.pizza_id = p.pizza_id group by o.order_id;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select pt.category, sum(o.quantity)  as Total_quantity from order_details o join pizzas p on o.pizza_id = p.pizza_id join pizza_types pt  on p.pizza_type_id = pt.pizza_type_id group by pt.category;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select pt.category, sum(o.quantity)  as Total_quantity from order_details o join pizzas p on o.pizza_id = p.pizza_id join pizza_types pt  on p.pizza_type_id = pt.pizza_type_id group by pt.category having sum(o.quantity) > 5000;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select p.pizza_id,pt.name from pizzas p join pizza_types pt on p.pizza_type_id = pt.pizza_type_id left join order_details o on p.pizza_id = o.pizza_id where o.pizza_id is null;"
+AravindTeja Bastipadu,aravindtejaprabha@gmail.com,"select p1.pizza_type_id,p1.size,p2.size, round(abs(p1.price-p2.price),2) as price_differencefrom pizzas p1join pizzas p2on p1.pizza_type_id = p2.pizza_type_idwhere p1.size <> p2.size andp1.size < p2.sizeorder by price_difference desc;"
